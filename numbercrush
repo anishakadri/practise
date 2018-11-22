@@ -1,0 +1,41 @@
+'''
+A quick attempt at a numbercrush challenge
+Python
+--------------------------------------------
+input: array
+output: array without numbers that occur 
+consequitively more than thrice
+--------------------------------------------
+Notes:
+try with recursive algorithm by dynamically reassigning array
+'''
+
+def numbercrush(arr):
+    i=0
+    newarr= []
+    while i < len(arr):
+        counter=1
+
+        while i+counter < len(arr):
+            if arr[i]== arr[i+counter]:
+                counter+=1
+            else:
+                break
+        
+        if counter>=3:
+            i+= counter
+        else:
+            while counter>0:
+                newarr.append(arr[i])
+                counter-=1
+            i+=1
+    print(newarr)
+        
+
+        
+arr1 = [0,0,0,1,2,3]
+arr2 = [1,2,2,2,3,4]
+def testing():
+    #assert
+    assert numbercrush(arr1)==[1,2,3]
+    assert numbercrush(arr1)==[1,3,4]
